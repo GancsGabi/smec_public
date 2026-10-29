@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlpineGear Growth Strategy - Performance Marketing Pitch</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0f172a',
+              card: '#1e293b',
+              border: '#334155',
+              cyan: '#0ea5e9',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              rose: '#f43f5e'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #090d16;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      user-select: none;
+    }
+
+    .slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+      transform: scale(0.98);
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card-hover {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      transform: translateY(-3px);
+      border-color: rgba(14, 165, 233, 0.4);
+      box-shadow: 0 20px 35px -10px rgba(14, 165, 233, 0.15);
+    }
+
+    /* Custom Scrollbar for drawer */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0ea5e9;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-col justify-between">
+
+  <!-- TOP BAR / HEADER -->
+  <header class="h-14 px-6 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between z-20 backdrop-blur-md">
+    <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-400 to-emerald-400 flex items-center justify-center font-bold text-slate-950 font-heading">
+        <i class="fa-solid fa-mountain text-sm"></i>
+      </div>
+      <span class="font-heading font-bold text-lg tracking-wider text-white">AlpineGear <span class="text-sky-400 text-xs font-normal font-sans ml-2 px-2 py-0.5 rounded bg-sky-950 border border-sky-800">Performance Strategy Pitch</span></span>
+    </div>
+
+    <!-- Slide Indicators / Title -->
+    <div class="hidden md:flex items-center space-x-2 text-sm text-slate-400">
+      <span id="slide-title-header" class="font-medium text-slate-200">Executive Blueprint &amp; Objectives</span>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex items-center space-x-3">
+      <button onclick="toggleDrawer()" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-300 font-medium transition flex items-center space-x-2">
+        <i class="fa-solid fa-table-cells-large text-sky-400"></i>
+        <span class="hidden sm:inline">Thumbnails</span>
+      </button>
+      <button onclick="toggleFullscreen()" class="px-3 py-1.5 rounded-md bg-sky-600 hover:bg-sky-500 text-xs text-white font-medium transition flex items-center space-x-2 shadow-lg shadow-sky-600/20">
+        <i class="fa-solid fa-expand"></i>
+        <span class="hidden sm:inline">Vollbild</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN SLIDE CANVAS STAGE -->
+  <main class="flex-grow relative overflow-hidden flex items-center justify-center p-4 md:p-8">
+
+    <!-- PROGRESS BAR (Top Edge of Stage) -->
+    <div class="absolute top-0 left-0 right-0 h-1 bg-slate-800 z-10">
+      <div id="progress-bar" class="h-full bg-gradient-to-r from-sky-500 to-emerald-400 transition-all duration-300" style="width: 12.5%;"></div>
+    </div>
+
+    <!-- SLIDE CONTAINER WRAPPER (Aspect 16:9 Max Box) -->
+    <div class="w-full h-full max-w-7xl max-h-[800px] relative flex flex-col">
+
+      <!-- ================= SLIDE 1 ================= -->
+      <section class="slide active w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -top-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Header -->
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-sky-950 text-sky-400 border border-sky-800">Folie 01 // Strategie-Planung</span>
+            <h1 class="text-3xl md:text-5xl font-heading font-bold text-white mt-2">AlpineGear Growth Strategy</h1>
+            <p class="text-slate-400 text-sm md:text-base mt-1">E-Commerce Skalierung &amp; Performance-Steuerung für Outdoor &amp; Sport</p>
+          </div>
+          <div class="hidden sm:block text-right">
+            <span class="text-xs text-slate-500 block">Zielvorgabe Head of E-Commerce</span>
+            <span class="text-sm font-semibold text-emerald-400"><i class="fa-solid fa-arrow-trend-up mr-1"></i>+20% YoY @ ROAS 8.0</span>
+          </div>
+        </div>
+
+        <!-- Target KPI Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 z-10">
+          <div class="glass-card glass-card-hover p-5 rounded-xl border-l-4 border-l-sky-500">
+            <div class="flex justify-between items-center text-slate-400 text-xs mb-2">
+              <span>UMSATZZIEL</span>
+              <i class="fa-solid fa-chart-line text-sky-400"></i>
+            </div>
+            <div class="text-3xl font-heading font-bold text-white">+20% YoY</div>
+            <p class="text-xs text-slate-400 mt-2">Umsatzsteigerung im deutschen Onlineshop in den nächsten 12 Monaten.</p>
+          </div>
+
+          <div class="glass-card glass-card-hover p-5 rounded-xl border-l-4 border-l-emerald-500">
+            <div class="flex justify-between items-center text-slate-400 text-xs mb-2">
+              <span>EFFIZIENZ-ZIEL</span>
+              <i class="fa-solid fa-bullseye text-emerald-400"></i>
+            </div>
+            <div class="text-3xl font-heading font-bold text-white">ROAS 8.0</div>
+            <p class="text-xs text-slate-400 mt-2">Ziel-Profitabilität über alle Google &amp; Microsoft Accounts.</p>
+          </div>
+
+          <div class="glass-card glass-card-hover p-5 rounded-xl border-l-4 border-l-amber-500">
+            <div class="flex justify-between items-center text-slate-400 text-xs mb-2">
+              <span>MONATSBUDGET</span>
+              <i class="fa-solid fa-wallet text-amber-400"></i>
+            </div>
+            <div class="text-3xl font-heading font-bold text-white">100.000 €</div>
+            <p class="text-xs text-slate-400 mt-2">Optimal ausbalancierter Kanal-Split (Search, Shopping, Social).</p>
+          </div>
+        </div>
+
+        <!-- Strategy Triad -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 z-10">
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <h4 class="text-sky-400 font-semibold text-sm mb-1 flex items-center">
+              <i class="fa-solid fa-bolt mr-2"></i>1. Performance Max Engine
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">Der Haupttreiber für Neukundengewinnung über Google-Shopping-Feeds.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <h4 class="text-emerald-400 font-semibold text-sm mb-1 flex items-center">
+              <i class="fa-solid fa-shield-halved mr-2"></i>2. Isolated Brand Protection
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">Strikter Marken-Ausschluss in PMax. Marken-Traffic wird zu 100% separat geschützt.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <h4 class="text-amber-400 font-semibold text-sm mb-1 flex items-center">
+              <i class="fa-solid fa-chart-pie mr-2"></i>3. Incremental Reach (MS Ads)
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">Günstigere Klicks auf Bing plus Meta DPA (5%) zur kontinuierlichen Funnel-Befüllung.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 2 ================= -->
+      <section class="slide w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <!-- Header -->
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-sky-950 text-sky-400 border border-sky-800">Folie 02 // Account-Architektur</span>
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mt-1">Strukturierter Kampagnenbaum (100.000 € Budget)</h2>
+            <p class="text-slate-400 text-xs mt-0.5">Glasklare Aufteilung nach Funnel-Stufen, Margen und Markenschutz</p>
+          </div>
+        </div>
+
+        <!-- Campaign Tree Visual -->
+        <div class="my-auto z-10 py-2 space-y-2">
+          <!-- Root Node -->
+          <div class="p-2.5 rounded-lg bg-slate-950 border border-sky-500/40 flex items-center justify-between">
+            <span class="text-xs font-bold text-sky-400 font-mono"><i class="fa-solid fa-sitemap mr-2"></i>AlpineGear Performance Account Tree</span>
+            <span class="text-xs text-slate-400">Monatsinvestment: <strong>100.000 €</strong></span>
+          </div>
+
+          <!-- Tree Branches Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+            <!-- Branch 1 -->
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-sky-500/30 flex flex-col justify-between">
+              <div>
+                <div class="font-bold text-sky-400 mb-1 border-b border-slate-800 pb-1">1. Google PMax (60k € / 60%)</div>
+                <div class="text-slate-400 text-[11px] mb-2">Non-Brand Feed Engine</div>
+                <ul class="space-y-1.5 text-[11px] text-slate-300">
+                  <li class="flex items-center justify-between">
+                    <span>• High Margin (&gt;50%)</span>
+                    <span class="text-emerald-400 font-mono">30k €</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>• Top Bestseller</span>
+                    <span class="text-sky-400 font-mono">20k €</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>• Clearance / Sale</span>
+                    <span class="text-amber-400 font-mono">10k €</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-2 pt-1.5 border-t border-slate-800 text-[10px] text-rose-400 flex items-center">
+                <i class="fa-solid fa-lock mr-1"></i>Brand Exclusion List aktiv
+              </div>
+            </div>
+
+            <!-- Branch 2 -->
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-emerald-500/30 flex flex-col justify-between">
+              <div>
+                <div class="font-bold text-emerald-400 mb-1 border-b border-slate-800 pb-1">2. Google Search (20k € / 20%)</div>
+                <div class="text-slate-400 text-[11px] mb-2">STAG + Isolated Brand</div>
+                <ul class="space-y-1.5 text-[11px] text-slate-300">
+                  <li class="flex items-center justify-between">
+                    <span>• Brand [AlpineGear]</span>
+                    <span class="text-amber-400 font-mono">5k €</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>• STAG: Apparel</span>
+                    <span class="text-emerald-400 font-mono">8k €</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>• STAG: Hardgoods</span>
+                    <span class="text-emerald-400 font-mono">7k €</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-2 pt-1.5 border-t border-slate-800 text-[10px] text-slate-400">
+                High-Intent Search mit Exact & Phrase Match + tROAS
+              </div>
+            </div>
+
+            <!-- Branch 3 -->
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-amber-500/30 flex flex-col justify-between">
+              <div>
+                <div class="font-bold text-amber-400 mb-1 border-b border-slate-800 pb-1">3. Microsoft Ads (15k € / 15%)</div>
+                <div class="text-slate-400 text-[11px] mb-2">Shopping &amp; Search</div>
+                <ul class="space-y-1.5 text-[11px] text-slate-300">
+                  <li class="flex items-center justify-between">
+                    <span>• MS Shopping Feed</span>
+                    <span class="text-amber-400 font-mono">10k €</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>• MS High-Intent Search</span>
+                    <span class="text-amber-400 font-mono">5k €</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-2 pt-1.5 border-t border-slate-800 text-[10px] text-emerald-400">
+                Günstigere CPCs (~ -25%)
+              </div>
+            </div>
+
+            <!-- Branch 4 -->
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-rose-500/30 flex flex-col justify-between">
+              <div>
+                <div class="font-bold text-rose-400 mb-1 border-b border-slate-800 pb-1">4. Meta &amp; Prospecting (5k € / 5%)</div>
+                <div class="text-slate-400 text-[11px] mb-2">Holistischer Cross-Channel</div>
+                <ul class="space-y-1.5 text-[11px] text-slate-300">
+                  <li class="flex items-center justify-between">
+                    <span>• Meta DPA Catalog</span>
+                    <span class="text-rose-400 font-mono">3k €</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>• YouTube Video Prospecting</span>
+                    <span class="text-rose-400 font-mono">2k €</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-2 pt-1.5 border-t border-slate-800 text-[10px] text-slate-400">
+                Erreicht Outdoor-Käufer vor der Suche
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-lg bg-sky-950/40 border border-sky-800/60 flex items-center justify-between text-xs text-sky-300 z-10">
+          <span><i class="fa-solid fa-lightbulb mr-2 text-sky-400"></i><strong>Architektur-Prinzip:</strong> Die Struktur vermeidet Kannibalisierung und ordnet jedes Budget einer klaren Rolle im Funnel zu.</span>
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 3 ================= -->
+      <section class="slide w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-emerald-950 text-emerald-400 border border-emerald-800">Folie 03 // Search-Setups &amp; Ads</span>
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mt-1">High-Intent Search &amp; Praxis-Anzeigenbeispiele</h2>
+            <p class="text-slate-400 text-xs mt-0.5">Konkrete STAG-Beispiele für Keywords, Ad Copies und Matching-Logik</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto z-10 py-2">
+          <!-- STAG 1 -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-sky-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-sky-400 flex items-center"><i class="fa-solid fa-shirt mr-2"></i>STAG 1: Apparel / Outerwear</span>
+                <span class="text-[10px] bg-sky-950 text-sky-300 px-2 py-0.5 rounded border border-sky-800">High-Intent</span>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
+                  <span class="text-slate-400 text-[10px] block font-mono">TARGET KEYWORDS:</span>
+                  <p class="text-slate-200 font-mono text-[11px]"><code class="text-sky-300">[gore-tex wanderjacke damen]</code>, <code class="text-emerald-300">"wasserdichte hardshell jacke"</code></p>
+                </div>
+
+                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
+                  <span class="text-slate-400 text-[10px] block font-mono">RESPONSIVE SEARCH AD (RSA) COPY:</span>
+                  <p class="text-emerald-400 font-bold text-[11px] mt-1">Headline 1: Wasserdichte Wanderjacken | AlpineGear</p>
+                  <p class="text-sky-400 font-medium text-[11px]">Headline 2: Gore-Tex Schutz für jede Tour</p>
+                  <p class="text-slate-300 text-[10px] mt-1 leading-relaxed">Description: Top-Schutz bei jedem Wetter. Atmungsaktiv, winddicht &amp; extrem langlebig. Versandkostenfrei ab 50 €! Jetzt online bestellen.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2 text-[10px] text-slate-400 flex justify-between">
+              <span>Bidding: tROAS / Max Value</span>
+              <span>Assets: Sitelinks, Price Extensions</span>
+            </div>
+          </div>
+
+          <!-- STAG 2 -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-emerald-400 flex items-center"><i class="fa-solid fa-mountain mr-2"></i>STAG 2: Hardgoods / Klettern</span>
+                <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">High-Intent</span>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
+                  <span class="text-slate-400 text-[10px] block font-mono">TARGET KEYWORDS:</span>
+                  <p class="text-slate-200 font-mono text-[11px]"><code class="text-sky-300">[gore-tex kletterjacke]</code>, <code class="text-emerald-300">"kletterschuh herren test"</code></p>
+                </div>
+
+                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
+                  <span class="text-slate-400 text-[10px] block font-mono">RESPONSIVE SEARCH AD (RSA) COPY:</span>
+                  <p class="text-emerald-400 font-bold text-[11px] mt-1">Headline 1: Hochwertige Kletterausrüstung | AlpineGear</p>
+                  <p class="text-sky-400 font-medium text-[11px]">Headline 2: Profi-Gurte, Seile &amp; Kletterschuhe</p>
+                  <p class="text-slate-300 text-[10px] mt-1 leading-relaxed">Description: Professionelle Kletterharnische &amp; Seile für alpine Touren. Maximaler Grip &amp; Sicherheit. Versandkostenfrei ab 50 €. Jetzt bestellen!</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2 text-[10px] text-slate-400 flex justify-between">
+              <span>Bidding: tROAS / Max Value</span>
+              <span>Assets: Callouts, Structured Snippets</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-lg bg-slate-900/90 border border-slate-800 flex justify-between items-center text-xs z-10">
+          <span class="text-slate-300"><i class="fa-solid fa-bullseye text-emerald-400 mr-2"></i><strong>Qualitätsfaktor-Strategie:</strong> Exakte Passgenauigkeit zwischen Keyword, Anzeigentext und Zielseite erhöht den Quality Score und senkt den tatsächlichen CPC.</span>
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 4 ================= -->
+      <section class="slide w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-sky-950 text-sky-400 border border-sky-800">Folie 04 // Algorithmus-Kontrolle</span>
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mt-1">PMax Guardrails &amp; Feed-Hygiene</h2>
+            <p class="text-slate-400 text-xs mt-0.5">Drei essenzielle Kontrollmechanismen für echte Inkrementalität</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto z-10 py-2">
+          <!-- Pillar 1 -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/30 flex flex-col justify-between">
+            <div>
+              <div class="w-9 h-9 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold mb-3">
+                <i class="fa-solid fa-ban text-base"></i>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-2">1. Universal Brand Exclusion</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-3">PMax schnappt sich standardmäßig bevorzugt Marken-Klicks, um den gemeldeten ROAS künstlich aufzublähen.</p>
+            </div>
+            <div class="p-2.5 rounded bg-slate-950 border border-slate-800 text-[11px] text-slate-400">
+              <strong class="text-rose-400 block mb-0.5">Regel:</strong>
+              Strikter Ausschluss von <code>[AlpineGear]</code> auf PMax-Ebene für echten Neukunden-Fokus.
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-sky-500/30 flex flex-col justify-between">
+            <div>
+              <div class="w-9 h-9 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold mb-3">
+                <i class="fa-solid fa-tags text-base"></i>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-2">2. Custom Margin Labels</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-3">Produkte werden im Google Merchant Center nach Profitabilität kategorisiert.</p>
+            </div>
+            <div class="p-2.5 rounded bg-slate-950 border border-slate-800 text-[11px] text-slate-400">
+              <strong class="text-sky-400 block mb-0.5">Custom Labels:</strong>
+              <code class="text-emerald-400">High-Margin</code> | <code class="text-sky-400">Bestsellers</code> | <code class="text-amber-400">Clearance</code>. Gebote nach Marge.
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-emerald-500/30 flex flex-col justify-between">
+            <div>
+              <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold mb-3">
+                <i class="fa-solid fa-arrows-rotate text-base"></i>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-2">3. 14-Tage Asset-Optimization</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-3">Kontinuierliches Audit aller Bilder, Videos und Texte pro Asset-Gruppe.</p>
+            </div>
+            <div class="p-2.5 rounded bg-slate-950 border border-slate-800 text-[11px] text-slate-400">
+              <strong class="text-emerald-400 block mb-0.5">Ablauf:</strong>
+              Austausch aller Assets mit "Low"-Rating im 14-Tage-Rhythmus gegen frische Season-Creatives.
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex justify-between items-center text-xs z-10">
+          <div class="flex items-center space-x-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-slate-300">Merchant Center Feed Status: <strong>100% synchronisiert &amp; Marge hinterlegt</strong></span>
+          </div>
+          <span class="text-slate-500 hidden sm:inline"></span>
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 5 ================= -->
+      <section class="slide w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-sky-950 text-sky-400 border border-sky-800">Folie 05 // Gebotsstrategie</span>
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mt-1">Budgetallokation &amp; tROAS-Steuerung</h2>
+            <p class="text-slate-400 text-xs mt-0.5">100.000 € Monatsbudget &amp; Begründung der Gebotslogik (8.5 vs. 8.0)</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 my-auto z-10 py-1">
+          <!-- Left: Table Split -->
+          <div class="lg:col-span-7 flex flex-col justify-between">
+            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Monatlicher Investment-Split (100.000 € Total)</h3>
+            
+            <div class="space-y-2">
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-3 h-3 rounded-full bg-sky-500"></div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Google Performance Max</div>
+                    <div class="text-[10px] text-slate-400">Non-Brand Feeds &amp; Dynamisches Shopping</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-sm font-mono font-bold text-sky-400">60.000 €</div>
+                  <div class="text-[10px] text-slate-500">60% Anteil</div>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Google Search (Brand &amp; Non-Brand)</div>
+                    <div class="text-[10px] text-slate-400">STAG High-Intent Keywords &amp; Markenschutz</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-sm font-mono font-bold text-emerald-400">20.000 €</div>
+                  <div class="text-[10px] text-slate-500">20% Anteil</div>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Microsoft Ads (Search &amp; Shopping)</div>
+                    <div class="text-[10px] text-slate-400">Inkrementelle Reichweite auf Bing</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-sm font-mono font-bold text-amber-400">15.000 €</div>
+                  <div class="text-[10px] text-slate-500">15% Anteil</div>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Testing &amp; Upper Funnel</div>
+                    <div class="text-[10px] text-slate-400">Meta DPA &amp; Video Prospecting</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-sm font-mono font-bold text-rose-400">5.000 €</div>
+                  <div class="text-[10px] text-slate-500">5% Anteil</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Bidding Strategy Rationale -->
+          <div class="lg:col-span-5 p-4 rounded-xl bg-slate-900/90 border border-sky-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Gebotslogik</span>
+                <span class="px-2 py-0.5 rounded text-[10px] bg-sky-950 text-sky-300 font-mono">Ziel: 8.0</span>
+              </div>
+              <h3 class="text-base font-bold text-white mb-2">Warum Start bei tROAS 8.5 statt 8.0?</h3>
+
+              <div class="space-y-2 text-xs text-slate-300">
+                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
+                  <strong class="text-amber-400 block mb-0.5"><i class="fa-solid fa-shield-cat mr-1"></i>1. Profitabilitäts-Puffer</strong>
+                  <p class="text-slate-400 text-[11px]">Ein initialer Start bei tROAS 8.5 bremst den Algorithmus in der Einspielphase ein, verhindert teure Streuverluste und schützt die Marge.</p>
+                </div>
+
+                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
+                  <strong class="text-emerald-400 block mb-0.5"><i class="fa-solid fa-stairs mr-1"></i>2. Kontrollierte Skalierung</strong>
+                  <p class="text-slate-400 text-[11px]">Sobald der Account bei 8.5 stabil konvertiert, senken wir den Ziel-ROAS in 0.2er-Schritten auf 8.0 ab, um schrittweise Volumen freizugeben.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-2 pt-2 border-t border-slate-800 text-center">
+              <span class="text-xs text-slate-400">Erwarteter Ziel-Umsatz bei ROAS 8.0: <strong class="text-emerald-400 font-mono">800.000 € / Monat</strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 6 ================= -->
+      <section class="slide w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-rose-950 text-rose-400 border border-rose-800">Folie 06 // Performance Check-In</span>
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mt-1">Pre-Call Audit Checklist (-15% YoY Drop)</h2>
+            <p class="text-slate-400 text-xs mt-0.5">Strukturierte Datenprüfung vor dem Gespräch mit dem Head of E-Commerce</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto z-10 py-1 text-xs">
+          <!-- Box 1 -->
+          <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/50 transition">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="w-7 h-7 rounded bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-xs">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h3 class="font-bold text-white text-xs">1. GA4 Data &amp; Funnel Audit</h3>
+            </div>
+            <ul class="text-slate-300 text-[11px] space-y-1 pl-2 border-l-2 border-sky-500/30">
+              <li>• Betrifft der Rückgang nur Paid Traffic oder den gesamten Shop?</li>
+              <li>• Ist die Conversion Rate im Checkout oder Warenkorb eingebrochen?</li>
+              <li>• Vergleiche der Average Order Value (AOV) Entwicklung zum Vorjahr.</li>
+            </ul>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 transition">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="w-7 h-7 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                <i class="fa-solid fa-sliders"></i>
+              </div>
+              <h3 class="font-bold text-white text-xs">2. Google &amp; MS Ads UI Audit</h3>
+            </div>
+            <ul class="text-slate-300 text-[11px] space-y-1 pl-2 border-l-2 border-emerald-500/30">
+              <li>• Lost Impression Share (Anteil entgangener Impressionen durch Budget vs. Rang).</li>
+              <li>• Steigerung der Markt-CPCs in den Haupt-Kategorien.</li>
+              <li>• Suchbegriff-Berichte auf unerwünschte Streuverluste prüfen.</li>
+            </ul>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/50 transition">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="w-7 h-7 rounded bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">
+                <i class="fa-solid fa-boxes-packing"></i>
+              </div>
+              <h3 class="font-bold text-white text-xs">3. Merchant Center &amp; Bestand</h3>
+            </div>
+            <ul class="text-slate-300 text-[11px] space-y-1 pl-2 border-l-2 border-amber-500/30">
+              <li>• Out-of-Stock (OOS) Quoten bei unseren Top-20 Umsatzbringern.</li>
+              <li>• Produktsperrungen (Item Disapprovals) im Google Merchant Center.</li>
+              <li>• Preis- und Lieferzeit-Diskrepanzen im Feed.</li>
+            </ul>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-rose-500/50 transition">
+            <div class="flex items-center space-x-2 mb-2">
+              <div class="w-7 h-7 rounded bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-xs">
+                <i class="fa-solid fa-cloud-sun"></i>
+              </div>
+              <h3 class="font-bold text-white text-xs">4. Makro &amp; Wettbewerbs-Einflüsse</h3>
+            </div>
+            <ul class="text-slate-300 text-[11px] space-y-1 pl-2 border-l-2 border-rose-500/30">
+              <li>• Unpassende Wetterlage (z. B. molder Winter bremst Skibedarf).</li>
+              <li>• Aggressive Rabatt-Aktionen &amp; Preissenkungen der Haupt-Mitbewerber.</li>
+              <li>• Allgemeine Kaufzurückhaltung im Outdoor-Segment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-lg bg-rose-950/30 border border-rose-800/50 flex justify-between items-center text-xs text-rose-300 z-10">
+          <span><i class="fa-solid fa-magnifying-glass mr-2"></i><strong>Audit-Ziel:</strong> Identifikation der Performance-Bremsen zur Entwicklung eines datengestützten Maßnahmenplans.</span>
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 7 ================= -->
+      <section class="slide w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-amber-950 text-amber-400 border border-amber-800">Folie 07 // Diagnostische Fragen</span>
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mt-1">4 Schlüssel-Fragen an den Head of E-Commerce</h2>
+            <p class="text-slate-400 text-xs mt-0.5">Analytischer Schluss zur genauen Ursachenbestimmung</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto z-10 py-2 text-xs">
+          <!-- Question 1 -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-sky-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-2 text-sky-400 font-bold mb-2">
+                <span class="w-6 h-6 rounded bg-sky-500/20 flex items-center justify-center text-xs font-mono">1</span>
+                <span>SEO &amp; Direkt-Traffic Trend</span>
+              </div>
+              <p class="text-slate-200 font-medium mb-2">"Wie haben sich der organische Search-Traffic (SEO) und der Direkt-Traffic im selben Zeitraum entwickelt?"</p>
+              <p class="text-slate-400 text-[11px] leading-relaxed"><strong>Hintergrund:</strong> Fällt SEO ebenfalls um ~15%, handelt es sich um ein branchenweites Nachfrage- oder Saisonalitätsproblem und nicht um ein reines Ads-Problem.</p>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-amber-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-2 text-amber-400 font-bold mb-2">
+                <span class="w-6 h-6 rounded bg-amber-500/20 flex items-center justify-center text-xs font-mono">2</span>
+                <span>Shop-, Preis- &amp; Checkout-Anpassungen</span>
+              </div>
+              <p class="text-slate-200 font-medium mb-2">"Gab es kürzlich Änderungen an Produktpreisen, Versandkosten, Retourenregeln oder UX-Bugs im Checkout?"</p>
+              <p class="text-slate-400 text-[11px] leading-relaxed"><strong>Hintergrund:</strong> Erhöhte Versandkosten oder Checkout-Fehler drücken die Conversion Rate schlagartig nach unten.</p>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-2 text-emerald-400 font-bold mb-2">
+                <span class="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center text-xs font-mono">3</span>
+                <span>Warenverfügbarkeit Top-SKUs</span>
+              </div>
+              <p class="text-slate-200 font-medium mb-2">"Wie sah die Lieferfähigkeit und Lagerquote bei unseren Top-20 umsatzstärksten Produkten aus?"</p>
+              <p class="text-slate-400 text-[11px] leading-relaxed"><strong>Hintergrund:</strong> Sind Bestseller ausverkauft (OOS), verliert PMax rapide an Performance, da Ersatzartikel seltener konvertieren.</p>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-rose-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-2 text-rose-400 font-bold mb-2">
+                <span class="w-6 h-6 rounded bg-rose-500/20 flex items-center justify-center text-xs font-mono">4</span>
+                <span>Wettbewerbsdruck &amp; Promotions</span>
+              </div>
+              <p class="text-slate-200 font-medium mb-2">"Haben Mitbewerber aggressive Preissenkungen gestartet oder gab es eigene Promo-Verschiebungen?"</p>
+              <p class="text-slate-400 text-[11px] leading-relaxed"><strong>Hintergrund:</strong> Starke Rabatte der Konkurrenz verschieben die Preiswahrnehmung und senken unsere Shopping-Conversion-Rate.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-lg bg-amber-950/30 border border-amber-800/50 flex justify-between items-center text-xs text-amber-300 z-10">
+          <span><i class="fa-solid fa-comments mr-2"></i><strong>Ziel des Gesprächs:</strong> Abfrage holistischer E-Commerce-Daten zur präzisen Eingrenzung der tatsächlichen Ursachen.</span>
+        </div>
+      </section>
+
+      <!-- ================= SLIDE 8 ================= -->
+      <section class="slide w-full h-full flex-col justify-between p-6 md:p-10 glass-card rounded-2xl relative overflow-hidden">
+        <div class="flex justify-between items-start z-10">
+          <div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-emerald-950 text-emerald-400 border border-emerald-800">Folie 08 // Action Plan</span>
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mt-1">30-60-90 Tage Turnaround Maßnahmenplan</h2>
+            <p class="text-slate-400 text-xs mt-0.5">Ergebnisorientierte Phasen zur Wiederbelebung des Umsatzwachstums</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto z-10 py-2">
+          <!-- Phase 1 -->
+          <div class="glass-card p-4 rounded-xl border-t-4 border-t-rose-500 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-rose-400 font-bold block mb-1">PHASE 1 (TAG 1 - 30)</span>
+              <h3 class="text-sm font-bold text-white mb-2">Sofort-Entlastung &amp; Audit</h3>
+              
+              <ul class="text-xs text-slate-300 space-y-2">
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-rose-400 mr-1.5 mt-0.5"></i><span><strong>tROAS lockern:</strong> Absenkung auf 7.0–7.5 zur Bidding-Reaktivierung.</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-rose-400 mr-1.5 mt-0.5"></i><span><strong>Search Term Cleanup:</strong> Ausschließen harter Geldverbrenner.</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-rose-400 mr-1.5 mt-0.5"></i><span><strong>GMC Quick-Fixes:</strong> Korrektur aller abglehnten Feed-Produkte.</span></li>
+              </ul>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] text-slate-400">
+              Ziel: Volumen sofort wiederherstellen
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="glass-card p-4 rounded-xl border-t-4 border-t-amber-500 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-amber-400 font-bold block mb-1">PHASE 2 (TAG 31 - 60)</span>
+              <h3 class="text-sm font-bold text-white mb-2">Feed &amp; Structure Overhaul</h3>
+              
+              <ul class="text-xs text-slate-300 space-y-2">
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-amber-400 mr-1.5 mt-0.5"></i><span><strong>Custom Label Priority:</strong> Neuausrichtung auf lagernde Bestseller.</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-amber-400 mr-1.5 mt-0.5"></i><span><strong>Creative Refresh:</strong> Frische Season-Assets für PMax Einspielung.</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-amber-400 mr-1.5 mt-0.5"></i><span><strong>MS Ads Skalierung:</strong> Ausbau von Bing Shopping für günstige Conversions.</span></li>
+              </ul>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] text-slate-400">
+              Ziel: Konversionsrate im Feed optimieren
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="glass-card p-4 rounded-xl border-t-4 border-t-emerald-500 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono text-emerald-400 font-bold block mb-1">PHASE 3 (TAG 61 - 90)</span>
+              <h3 class="text-sm font-bold text-white mb-2">Nachhaltiges Skalieren</h3>
+              
+              <ul class="text-xs text-slate-300 space-y-2">
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-emerald-400 mr-1.5 mt-0.5"></i><span><strong>Meta DPA Skalierung:</strong> Social Retargeting zur Funnel-Speisung.</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-emerald-400 mr-1.5 mt-0.5"></i><span><strong>Dynamic Pricing Sync:</strong> Kopplung von Feed-Daten an Shop-Promos.</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-caret-right text-emerald-400 mr-1.5 mt-0.5"></i><span><strong>Return to ROAS 8.0:</strong> Schrittweise Anhebung des Ziel-ROAS.</span></li>
+              </ul>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] text-slate-400">
+              Ziel: +20% YoY Wachstum stabil verankern
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/60 flex justify-between items-center text-xs text-emerald-300 z-10">
+          <span><i class="fa-solid fa-handshake mr-2"></i><strong>Verbindlichkeit:</strong> Wöchentliche Jour-Fixes, volle Reporting-Transparenz und enges Monitoring für den Head of E-Commerce.</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- BOTTOM CONTROL NAVIGATION BAR -->
+  <footer class="h-16 px-6 bg-slate-900/90 border-t border-slate-800 flex items-center justify-between z-20 backdrop-blur-md">
+    <!-- Prev Button -->
+    <button onclick="prevSlide()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium transition flex items-center space-x-2 border border-slate-700">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span class="hidden sm:inline">Zurück</span>
+    </button>
+
+    <!-- Slide Counter & Indicators -->
+    <div class="flex items-center space-x-4">
+      <span id="slide-counter" class="text-sm font-mono text-slate-400">Folie <strong class="text-sky-400">1</strong> von 8</span>
+      
+      <!-- Bullet Dots -->
+      <div class="hidden sm:flex items-center space-x-1.5" id="bullet-indicators">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- Next Button -->
+    <button onclick="nextSlide()" class="px-5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition flex items-center space-x-2 shadow-lg shadow-sky-600/20">
+      <span class="hidden sm:inline">Weiter</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </footer>
+
+  <!-- DRAWER / THUMBNAIL OVERLAY -->
+  <div id="thumbnail-drawer" class="fixed inset-0 bg-slate-950/90 backdrop-blur-xl z-50 flex flex-col justify-between p-6 transition-all duration-300 opacity-0 pointer-events-none">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-heading font-bold text-white flex items-center"><i class="fa-solid fa-table-cells-large text-sky-400 mr-3"></i>Präsentations-Übersicht (8 Folien)</h3>
+      <button onclick="toggleDrawer()" class="w-10 h-10 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Thumbnails Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 overflow-y-auto my-auto p-2">
+      <div onclick="goToSlide(0)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 01</span>
+        <h4 class="font-bold text-white text-sm">Executive Blueprint</h4>
+        <p class="text-xs text-slate-400 mt-1">Ziele (+20% YoY, ROAS 8) &amp; Strategie-Triade.</p>
+      </div>
+
+      <div onclick="goToSlide(1)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 02</span>
+        <h4 class="font-bold text-white text-sm">Account-Architektur</h4>
+        <p class="text-xs text-slate-400 mt-1">Visueller Kampagnenbaum für 100k Budget.</p>
+      </div>
+
+      <div onclick="goToSlide(2)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 03</span>
+        <h4 class="font-bold text-white text-sm">Search-Setups &amp; Ads</h4>
+        <p class="text-xs text-slate-400 mt-1">STAG-Beispiele, Keywords &amp; Anzeigentexte.</p>
+      </div>
+
+      <div onclick="goToSlide(3)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 04</span>
+        <h4 class="font-bold text-white text-sm">PMax Guardrails</h4>
+        <p class="text-xs text-slate-400 mt-1">Brand Exclusion, Custom Labels &amp; Assets.</p>
+      </div>
+
+      <div onclick="goToSlide(4)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 05</span>
+        <h4 class="font-bold text-white text-sm">Gebotsstrategie</h4>
+        <p class="text-xs text-slate-400 mt-1">100k Split &amp; Begründung tROAS 8.5 Start.</p>
+      </div>
+
+      <div onclick="goToSlide(5)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 06</span>
+        <h4 class="font-bold text-white text-sm">Pre-Call Audit Checklist</h4>
+        <p class="text-xs text-slate-400 mt-1">GA4, Ads UI, Merchant Center &amp; Makro.</p>
+      </div>
+
+      <div onclick="goToSlide(6)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 07</span>
+        <h4 class="font-bold text-white text-sm">Diagnostische Fragen</h4>
+        <p class="text-xs text-slate-400 mt-1">4 Schlüssel-Fragen an den Head of E-Commerce.</p>
+      </div>
+
+      <div onclick="goToSlide(7)" class="glass-card p-4 rounded-xl cursor-pointer hover:border-sky-500 transition text-left">
+        <span class="text-xs font-mono text-sky-400 block mb-1">FOLIE 08</span>
+        <h4 class="font-bold text-white text-sm">Turnaround Action Plan</h4>
+        <p class="text-xs text-slate-400 mt-1">30-60-90 Tage Plan zur Wachstums-Reaktivierung.</p>
+      </div>
+    </div>
+
+    <div class="text-center text-xs text-slate-500 mt-4">
+      Klicke auf eine Folie, um direkt zu ihr zu navigieren. (Drücke ESC zum Schließen)
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const slideTitleHeader = document.getElementById('slide-title-header');
+    const slideCounter = document.getElementById('slide-counter');
+    const progressBar = document.getElementById('progress-bar');
+    const bulletIndicatorsContainer = document.getElementById('bullet-indicators');
+    const drawer = document.getElementById('thumbnail-drawer');
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    const slideTitles = [
+      "Executive Blueprint & Objectives",
+      "Account-Architektur & Kampagnenbaum",
+      "High-Intent Search & Real-World Ads",
+      "PMax Guardrails & Feed-Hygiene",
+      "Budgetallokation & Gebotsstrategie",
+      "Pre-Call Audit Checklist (-15% YoY)",
+      "Diagnostische Fragen an Head of E-Commerce",
+      "30-60-90 Tage Turnaround Action Plan"
+    ];
+
+    // Initialize Bullet Indicators
+    function initBullets() {
+      bulletIndicatorsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-2 h-2 rounded-full transition-all ${i === currentSlide ? 'bg-sky-400 w-5' : 'bg-slate-700 hover:bg-slate-500'}`;
+        dot.onclick = () => goToSlide(i);
+        bulletIndicatorsContainer.appendChild(dot);
+      }
+    }
+
+    // Update Stage UI
+    function updateSlideUI() {
+      slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      // Update Header & Counter
+      slideTitleHeader.textContent = slideTitles[currentSlide];
+      slideCounter.innerHTML = `Folie <strong class="text-sky-400">${currentSlide + 1}</strong> von ${totalSlides}`;
+      
+      // Update Progress Bar
+      const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+
+      // Update Bullets
+      initBullets();
+    }
+
+    // Navigation Commands
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+      } else {
+        currentSlide = 0; // Loop back
+      }
+      updateSlideUI();
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+      } else {
+        currentSlide = totalSlides - 1; // Loop back
+      }
+      updateSlideUI();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateSlideUI();
+      closeDrawer();
+    }
+
+    // Drawer Controls
+    function toggleDrawer() {
+      if (drawer.classList.contains('opacity-0')) {
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        drawer.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        closeDrawer();
+      }
+    }
+
+    function closeDrawer() {
+      drawer.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+
+    // Fullscreen Toggle
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.log(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keybindings (Keyboard Arrows)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'Escape') {
+        closeDrawer();
+      }
+    });
+
+    // Initial Load Setup
+    window.onload = function() {
+      updateSlideUI();
+    };
+  </script>
+</body>
+</html>
