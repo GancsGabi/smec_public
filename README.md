@@ -1,0 +1,1 @@
+# smec_public
